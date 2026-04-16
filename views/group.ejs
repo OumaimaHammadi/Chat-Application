@@ -1,0 +1,64 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+
+
+<link rel="stylesheet" href="/group.css">
+
+
+<nav class="navbar_list navbar-expand-md navbar-dark bg-light">
+    <div class="container">
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+   
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <h2> Groups List </h2>         
+
+         
+
+</li>
+        </ul>
+        <a href="/friends/CreateGroup" class="btn btn-create">Create Group</a>      
+
+       </ul>
+     </div>
+    </div>
+</nav>
+
+
+<div class="chat-container">
+
+<div  class="chat-item ">
+     <% if (!groups || groups.length === 0) { %>
+    <span >No groups </span>
+<% } else { %>
+    <% for (let request of groups) { %>
+       <div class="group-item">
+            <a  href="/groups/chat/<%= request.id %>">
+                        <img src="/<%= request.image %>"
+                          alt="profile"
+         width="50"
+         height="50"
+         class="rounded-circle">  
+                <div class="chat-info">
+      <h4> <%= request.name %> </h4>
+
+             </div>
+            </a>
+       </div>
+        
+      
+      
+
+    <% } %>
+<% } %>
+
+</div>
+</div>
+
+
+
+<%- include('parts/scripts') %>

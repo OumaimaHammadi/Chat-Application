@@ -1,0 +1,75 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+<link rel="stylesheet" href="/create_groupe.css">
+<div class="container create-group">
+<h1>Create Group</h1>
+    <form action="/friends/CreateGroup" method="POST" enctype="multipart/form-data">
+
+<input type="text" placeholder="Name of Group" name="name">
+
+  
+<div class="file-upload">
+    <label for="image" class="custom-file-btn">
+         Choose Image
+    </label>
+    <input type="file" class="form-control" id="image" name="image">
+    <span id="file-name">No file chosen</span>
+</div>
+
+
+
+<% if (!friends || friends.length === 0) { %>
+    <span>No friends</span>
+<% } else { %>
+
+<ul class="list-group">
+
+    <% for (let request of friends) { %>
+
+    <li class="list-group-item d-flex align-items-center">
+
+        <input class="form-check-input me-2" type="checkbox" value="<%= request.id %>" name="members">
+
+        <a href="/profile/<%= request.id %>" class="d-flex align-items-center text-decoration-none text-dark">
+
+            <img src="/<%= request.image %>"
+                 alt="profile"
+                 width="40"
+                 height="40"
+                 class="rounded-circle me-2">
+
+            <%= request.name %>
+
+        </a>
+
+    </li>
+
+    <% } %>
+
+</ul>
+
+<% } %>
+
+
+<input type="submit" value="Create" class="bnt btn-danger" >
+
+    </form>
+</div>
+
+
+
+<script>
+const fileInput = document.getElementById('image');
+const fileName = document.getElementById('file-name');
+
+fileInput.addEventListener('change', () => {
+    if(fileInput.files.length > 0) {
+        fileName.textContent = fileInput.files[0].name;
+    } else {
+        fileName.textContent = "No file chosen";
+    }
+});
+</script>
+
+

@@ -1,0 +1,32 @@
+<%- include ('parts/header') %>
+<%- include ('parts/navbar') %>
+<link rel="stylesheet" href="/login.css">
+
+
+<div class="container text-center">
+    <h1> Login Page </h1>
+    <form action="/login" method="POST">
+    <input type="email" class="form-control" name="email" placeholder="email">
+    <% let EmailErrors = validationErrors.find(err => err.param === 'email') %>
+    <% if (EmailErrors) { %>
+        <p class="alert alert-danger">
+            <%- EmailErrors.msg %>
+        </p>
+    <% } %>
+    <input type="password" class="form-control" name="password" placeholder="password">
+    <% let passwordErrors = validationErrors.find(err => err.param === 'password') %>
+    <% if (passwordErrors ) { %>
+        <p class="alert alert-danger">
+            <%- passwordErrors.msg %>
+        </p>
+    <% } %>
+    <input type="submit" value="Login" class="btn btn-primary">
+
+</form>
+
+<div>
+    Don't have  account ? <a href="/signup"> Create Account</a>
+</div>
+</div>
+
+

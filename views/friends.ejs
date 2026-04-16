@@ -1,0 +1,78 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+<link rel="stylesheet" href="/friends.css">
+
+
+<nav class="navbar_list navbar-expand-md navbar-dark bg-light">
+    <div class="container ">
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+   
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <h2> Friends List</h2>         
+
+
+</li>
+        </ul>
+<a href="/friends/CreateGroup" class="btn btn-create">Create Group</a>      
+</ul>
+     </div>
+    </div>
+</nav>
+
+<div class="container friendslist">
+     <% if (!friends || friends.length === 0) { %>
+    <span >No friends </span>
+<% } else { %>
+    <% for (let request of friends) { %>
+              <!-- <div class="friend-item">
+      
+            <a  href="/profile/<%= request.id %>" class="friend-info">
+                        <img src="/<%= request.image %>"
+                          alt="profile"
+         width="50"
+         height="50"
+         class="rounded-circle">     
+  <span><%= request.name %></span>
+            </a>
+
+                 <div class="friend-actions">
+          <button class="btn btn-success btn-sm">Chat</button>
+          <button class="btn btn-danger btn-sm">Unfriend</button>
+        </div>
+
+      </div> -->
+      
+    
+    <div class="friend-item">
+    <div class="friend-image">
+        <img src="/<%= request.image %>" alt="profile" width="100" height="100"
+        class="rounded-circle">
+<!--         <span class="status online"></span>
+ -->    
+</div>
+
+    <a href="/profile/<%= request.id %>" class="friend-name">
+        <%= request.name %>
+    </a>
+
+    <div class="friend-actions">
+        <button class="btn btn-message" formaction="/">Chat</button>
+        <button class="btn btn-remove">Unfriend</button>
+    </div>
+</div>
+    
+      <% } %>
+<% } %>
+
+</div>
+
+
+ 
+
+
+<%- include('parts/scripts') %>

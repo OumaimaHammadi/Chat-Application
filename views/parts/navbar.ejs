@@ -1,0 +1,186 @@
+                  
+                   
+                   <link rel="stylesheet" href="/navbar.css">
+
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container-fluid">
+                                   <a class="navbar-brand" href="/" id="logo"><span> Chat Application </span></a>
+
+             <button class="navbar-toggler" type="button" data-bs-toggle="dropdown" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+
+              
+           
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto">
+                <% if (isUser) { %>
+
+                 <li class="nav-item  <%= pageTitle ==='Home' ? 'active':'' %>">
+                   <a class="nav-link" href="/home"><i class="bi bi-house"></i>
+                    <span>Home</span>
+                  </a>
+                 </li>
+
+
+                  <li class="nav-item <%= pageTitle ==='Groups' ? 'active':'' %>">
+                    <a class="nav-link" href="/groups"> <i class="bi bi-people"></i>
+                         <span>Groups</span>
+
+                    </a>
+                  </li>
+
+  
+                  <li class="nav-item <%= pageTitle ==='Friends' ? 'active':'' %>">
+                      <a class="nav-link" href="/friends"> <i class="bi bi-person"></i>
+                                               <span>Friends</span>
+                      </a>
+                   </li>
+
+                   <% } else { %>
+
+                   <li class="nav-item <%= pageTitle ==='Login' ? 'active':'' %>">
+                     <a class="nav-link" href="/login">Login</a>
+                   </li>
+                   <li class="nav-item <%= pageTitle ==='Signup' ? 'active':'' %>">
+                     <a class="nav-link" href="/signup">Signup</a>
+                   </li>
+                   <% } %>
+
+
+
+
+
+
+                   </ul>  
+                 
+
+
+
+
+
+
+
+
+
+
+
+                          <% if ( isUser ) { %>
+<input type="hidden" value="<%= isUser %>" id="userId">
+
+
+
+
+<div class="d-flex align-items-center ms-auto gap-3">
+   <div class=" dropdown ">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="friendRequestsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              
+                <i class="bi bi-person-plus"></i> Friend Requests
+
+              </button>
+
+                <ul  id="friendRequests"    class="dropdown-menu"  id="friendRequestsDropdown"  aria-labelledby="friendRequestsDropdown">
+                      <% if (!friendRequests || friendRequests.length === 0) { %>
+    <span >No Friend Requests</span>
+     <!-- <li class="dropdown-item text-center">No Friend Request</li> -->
+<% } else { %>
+    <% for (let request of friendRequests) { %>
+        <li>
+            <a class="dropdown-item" href="/profile/<%= request.id %>">
+                        <img src="/<%= request.image %>"
+                          alt="profile"
+         width="60"
+         height="60"
+         class="rounded-circle">     <%= request.name %>
+            </a>
+        </li>
+    <% } %>
+<% } %>
+    
+                </ul>
+              </div>
+
+
+
+
+
+
+
+
+<div class="dropdown">
+  <a class="d-flex align-items-center text-decoration-none dropdown-toggle"
+     href="#"
+     id="profileDropdown"
+     role="button"
+     data-bs-toggle="dropdown"
+     aria-expanded="false">
+
+      <img src="/<%= UserImage %>" 
+         alt="profile"
+         width="50"
+         height="50"
+         class="rounded-circle border border-2 border-primary">
+
+  </a>
+
+  <ul class="dropdown-menu dropdown-menu-end shadow"
+      aria-labelledby="profileDropdown">
+
+    <li class="dropdown-header text-center">
+      <strong><%= UserName %></strong><br>
+    </li>
+
+    <li><hr class="dropdown-divider"></li>
+
+    <li>
+ 
+
+      <a class="dropdown-item" href="/profile">
+        <i class="bi bi-person me-2"></i> My Profile
+      </a>
+    </li>
+
+    <li>
+      <a class="dropdown-item" href="/">
+        <i class="bi bi-gear me-2"></i> Settings
+      </a>
+    </li>
+
+    <li><hr class="dropdown-divider"></li>
+
+    <li>
+      <a class="dropdown-item text-danger" href="/logout">
+        <i class="bi bi-box-arrow-right me-2"></i> Logout
+      </a>
+    </li>
+
+  </ul>
+</div> 
+</div>
+
+ 
+
+
+
+
+
+
+
+         
+         <% } %>
+
+             </div>
+            </div>
+           </nav>
+ 
+         
+
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" 
+  integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
+</script>
+ 
+    
+  
+

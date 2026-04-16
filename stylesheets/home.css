@@ -1,0 +1,110 @@
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+#onlineFriends {
+    margin-top: 20px;
+}
+
+#onlineFriends .alert {
+  
+
+  margin-top: 40px;
+  text-align: center;
+  font-size:xx-large;
+
+  font-weight: 700;
+}
+
+
+
+#onlineFriends h1{
+    text-align: center;
+    margin: 20px 0 40px 0;
+    color: #007bff;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+/* Row d'amis */
+#onlineFriends .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Carte ami */
+#onlineFriends .col {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+}
+
+/* Effet hover sur les cartes */
+#onlineFriends .col:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Image de profil */
+#onlineFriends img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #007bff;
+}
+
+/* Nom de l'ami */
+#onlineFriends h3 {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    color:black;
+}
+
+/* Lien profil */
+#onlineFriends a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Bouton ou lien chat */
+#onlineFriends .btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 12px;
+    border-color: #007bff;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+        font-weight: 500;
+
+
+}
+
+#onlineFriends span:hover {
+    background-color: #007bff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #onlineFriends .col {
+        flex: 1 1 45%;
+    }
+}
+
+@media (max-width: 576px) {
+    #onlineFriends .col {
+        flex: 1 1 100%;
+    }
+}

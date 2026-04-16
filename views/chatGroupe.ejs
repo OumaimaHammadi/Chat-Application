@@ -1,0 +1,92 @@
+ <%- include('parts/header') %>
+<%- include('parts/navbar') %>
+                <link rel="stylesheet" href="/chat-groups.css">
+
+
+    
+<div class="row chat-groups">
+    <div class="col col-12 col-md-3">
+                <input type="hidden" id="groupId" value="<%= groupId %>">
+
+        <img src="/<%=groupData.image %>" alt=""> <br>
+        <a href="/groups/<%=groupData.id %>">
+            <%=groupData.name %> <br>
+<span>-groups-</span>
+
+        </a>
+    </div>
+  
+
+    
+
+
+          
+<div class="col col-12 col-md-9 messages">
+  <!-- <div id="messages-container">
+
+    <% for (let message of messages) { %>
+
+
+        <div class="message <%= message.sender._id.toString() === isUser.toString() ? 'sent' : 'received' %>">
+          <strong><%= message.sender.username %></strong> <br>
+                              <img src="/<%= message.sender.image %>" width="30" height="30">
+                                                  <%= message.content %>
+
+
+
+        </div>
+
+        
+
+      <% } %>
+
+
+  </div> -->
+
+
+  <div id="messages-container">
+  <% for (let message of messages) { %>
+
+    <div class="message-row <%= message.sender._id.toString() === isUser ? 'sent' : 'received' %>">
+      
+      <!-- Image -->
+      <img src="/<%= message.sender.image %>" class="avatar">
+
+      <!-- Contenu -->
+      
+      <div class="message-content">
+         <div class="sender-name">
+          <%= message.sender.username %>
+        </div>
+
+        <div class="text">
+          <%= message.content %>
+        </div>
+      </div>
+
+    </div>
+
+  <% } %>
+</div>
+    <div class="message-form">
+            <textarea id="message"></textarea>
+            <button id="sendBtn">
+                <!-- Send -->
+                     <i class="bi bi-send-fill"></i>
+
+            </button>
+        </div>
+
+
+
+</div>
+</div>
+
+
+
+
+<%- include('parts/scripts') %>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/sockets/init.js"></script>
+  <script src="/js/sockets/chat-group.js"></script>

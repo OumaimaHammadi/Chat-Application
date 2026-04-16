@@ -1,0 +1,94 @@
+    <%- include ('parts/header')%>
+    <%- include ('parts/navbar')%>
+
+        <link rel="stylesheet" href="/profile.css">
+
+
+
+        <div class="container profile">
+            <div class="row">
+                <div class="col col-12 col-md-4"> 
+                <img src="/<%= userImage %>" class="rounded-circle profile_image " alt="Cinque Terre"  width="200" height="200" >
+                </div>
+
+            <div class="col col-12 col-md-6">
+            
+
+                                    
+
+        <h3><%= username %> </h3> 
+
+                
+        <% if(isOwner){ %>
+
+I am the user
+                
+
+
+                    <% } %>
+
+
+                    <% if(!isOwner){ %>
+                            I am not the user
+                        <form method="POST" id="friends-form" >
+                            <input type="hidden" id="myId" name="myId" value="<%=myId %>">
+                            <input type="hidden" id="myName" name="myName" value="<%=myName %>">
+                            <input type="hidden" id="myImage" name="myImage" value="<%=myImage %>">
+
+                            <input type="hidden" id="friendId" name="friendId" value="<%=friendId %>">
+                            <input type="hidden"  id="friendName" name="friendName" value="<%=username %>">
+                            <input type="hidden" id="friendImage"  name="friendImage" value="<%=userImage %>">
+
+
+
+                        <div>
+                            <% if(isFriends){%>
+
+
+                                is Friends  
+                                <input type="submit" value ="Chat" class="btn btn-primary">  
+                                <input type="submit" value ="Delete" class="btn btn-danger" formaction="/friends/delete">         
+                                                
+                                <% }else if (isRequestSent){ %>
+
+                                    Request is Sent
+                                    <input type="submit" value ="Cancel Request" class="btn btn-danger" formaction="/friends/cancel">
+
+                                    
+                                    <% } else if (isRequestReceived){ %>
+                                        Request is Received
+
+                                        <input type="submit" value ="Accept" class="btn btn-success" formaction="/friends/accept">  
+                                        <input type="submit" value ="Reject" class="btn btn-danger" formaction="/friends/reject">
+
+                                    <% } else { %>
+                                        Add Friend
+                                        <input type="submit" id="addBtn" value ="Add" class="btn btn-primary" >  
+
+                                        <% }  %>
+
+
+
+
+                        </div>
+
+                    </form>
+
+                    <% } %>
+
+                
+        
+                </div>
+            </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/sockets/init.js"></script>
+
+                <%- include('parts/scripts')%>
+                    <% if(!isOwner && !isFriends && !isRequestSent && !isRequestReceived ){ %>
+                        <script src="/js/sockets/friend.js"></script>
+
+                <% } %>
+
+

@@ -1,0 +1,84 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+<link rel="stylesheet" href="/signup.css">
+
+
+<div class="container text-center">
+    <h1>Create Account </h1>
+<form action="/signup" method="POST" enctype="multipart/form-data">
+        <input type="text" class="form-control" name="username" placeholder="username" autocomplete="on">
+    <% let UsernameErrors = validationErrors.find(err => err.param === 'username') %>
+    <% if (UsernameErrors) { %>
+        <p class="alert alert-danger">
+            <%- UsernameErrors.msg %>
+        </p>
+       
+
+    <%} %>
+    <input type="email" class="form-control" name="email" placeholder="email" autocomplete="on">
+    <% let EmailErrors = validationErrors.find(err => err.param === 'email') %>
+    <% if (EmailErrors) { %>
+        <p class="alert alert-danger">
+            <%= EmailErrors.msg %>
+        </p>
+    <%} %>
+    <input type="password" class="form-control" name="password" placeholder="password" autocomplete="on">
+    <% let passwordErrors = validationErrors.find(err => err.param === 'password') %>
+    <% if (passwordErrors ) { %>
+        <p class="alert alert-danger">
+            <%- passwordErrors.msg %>
+        </p>
+    <%} %>
+    <input type="password" class="form-control" name="confirmPassword" placeholder="confirm password" autocomplete="on">
+    <% let confirmpassword = validationErrors.find(err => err.param === 'confirmPassword') %>
+    <% if (confirmpassword) { %>
+        <p class="alert alert-danger">
+            <%- confirmpassword.msg %>
+        </p>
+    <%} %>
+
+
+ 
+
+
+<div class="file-upload">
+    <input type="file" id="image" name="image" class="custom-file-input">
+    
+    <label for="image" class="custom-file-btn">
+        
+        <span class="Choose-Image"> Choose Image </span>
+           <span id="file-name">No file chosen</span>
+
+   </label> 
+
+</div>
+
+<% let imageErrors = validationErrors.find(err => err.param === 'image') %>
+<% if (imageErrors) { %>
+    <p class="alert alert-danger">
+        <%- imageErrors.msg %>
+    </p>
+<% } %>
+  
+
+    <input type="submit" value="Signup" class="btn">
+
+</form>
+
+
+<div>
+    Already have  account ? <a href="/login"> Login</a>
+</div>
+</div>
+
+
+<script>
+document.getElementById("image").addEventListener("change", function() {
+    let fileName = this.files[0]?.name || "No file chosen";
+    document.getElementById("file-name").textContent = fileName;
+});
+</script>
+
+
+
+<%- include('parts/scripts') %>
