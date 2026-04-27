@@ -1,7 +1,8 @@
+
 const chatId =document.getElementById('chatId').value
 const msg = document.getElementById('message')
 const sendBtn =document.getElementById('sendBtn')
-
+const callBtn =document.getElementById('callBtn')
 const msgContainer =document.getElementById('messages-container')
 
 socket.emit('joinChat',chatId)
@@ -45,3 +46,57 @@ socket.on('newMessage', msg => {
 
     msgContainer.scrollTop = msgContainer.scrollHeight
 })
+
+
+let peer =new Peer()
+let peerId =null
+peer.on('open',id=>{
+    console.log('my id',id)
+    peerId =id
+})
+
+callBtn.onclick=()=>{
+    socket.emit('requestPeerId',chatId)
+}
+
+socket.on('getPeerId',()=>{
+    socket.emit('sendPeerId',{chatId:chatId,peerId:peerId})
+})
+
+socket.on('receivedPeerId',id=>{
+    console.log('receivedPeerId',id)
+    navigator.mediaDevices.getUserMedia({
+        audio:true,video:true
+
+    }).then(stream=>{
+        let call = peer.call(id,stream)
+        call.on('stream',showvideocall)
+
+
+         
+
+    }).catch(err=>{
+        console.log(err)
+    })
+})
+
+peer.on('call',call=>{
+    navigator.mediaDevices.getUserMedia({
+        audio:true,video:true
+
+    }).then(stream=>{
+        call.answer(stream)
+        call.on('stream',showvideocall)
+             
+
+    }).catch(err=>{
+        console.log(err)
+    })
+
+})
+function showvideocall(stream){
+    let video =document.createElement('video')
+    video.srcObject=stream
+    document.body.append(video)
+    video.play()
+}

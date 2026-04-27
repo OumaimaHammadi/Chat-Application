@@ -23,6 +23,41 @@
 }
 
 
+.video-call-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #0084ff;
+    /* background: linear-gradient(135deg, #0084ff, #00c6ff); */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Hover */
+.video-call-btn:hover {
+    background: linear-gradient(135deg, #006edc, #00aaff);
+    transform: translateY(-2px);
+}
+
+/* Click */
+.video-call-btn:active {
+    transform: scale(0.95);
+}
+
+/* Option avec icône */
+.video-call-btn::before {
+    font-size: 16px;
+}
+
+
 .messages {
     height: 90vh;
     display: flex;
