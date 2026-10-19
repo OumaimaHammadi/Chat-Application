@@ -1,18 +1,11 @@
-/* body{
-    background-color:#f5f6fa;
-    font-family: Arial, Helvetica, sans-serif;
-} */
-
 .navbar{
     padding: 10px 40px;
-    background:#1f1f1f;
+    background:black;
     box-shadow:0 3px 12px rgba(0,0,0,0.2);
 }
 
 
-/* .navbar .container {
-    padding-left: 0;
-} */
+
 
 #logo {
     margin-right: 70px; 
@@ -66,37 +59,7 @@
 }
 
 
-/* bouton */
-/* #friendRequestsDropdown {
-    border-radius: 25px;
-    padding: 8px 18px;
-    margin-right: 25px;
-    font-weight: 600;
-    font-size: 20px;
-    min-width: 220px;
-    max-width: 300px;
-}
 
-#friendRequests {
-    font-size: 20px;
-}
-
-#friendRequests .dropdown-item {
-    font-size: 20px;
-}
-
-.dropdown-menu {
-    border: none;
-    border-radius: 12px;
-    padding: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-   width: fit-content;
-min-width: 230px;
-} */
-
-
-/* Bouton */
-/* BUTTON FRIEND REQUEST */
 button#friendRequestsDropdown.btn.dropdown-toggle {
   font-size: 18px !important;
 }

@@ -1,4 +1,31 @@
-/* Colonne profil gauche */
+body, html {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+.col-md-3,
+.col-md-9 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.messages {
+    overflow: hidden;
+    max-width: 100%;
+}
+
+
+
+
+
+
 .col-md-3 {
     background: #ffffff;
     padding: 20px;
@@ -28,7 +55,7 @@
     height: 90vh;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 5px;
     /* background: #f0f2f5; */
 }
 

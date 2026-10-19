@@ -23,12 +23,13 @@ const authController =require('../controllers/auth.controller')
         }
 
     })
-}).single('image'),
-check('image').custom((value,{req})=>{
-    if(req.file) return true
-    else throw 'image is required'
+})
+.single('image'),
+// check('image').custom((value,{req})=>{
+//     if(req.file) return true
+//     else throw 'image is required'
 
-}),
+// }),
  
  check('username').not().isEmpty().withMessage('username is required'),
 
@@ -38,7 +39,7 @@ check('image').custom((value,{req})=>{
  
  check('password').not().isEmpty().withMessage('password is required').isLength({min:6}).withMessage('password must be at least 6 characters') ,
  
- check('confirm password').custom((value,{req})=>{ //custom validator
+ check('confirmPassword').custom((value,{req})=>{ //custom validator
      if(value === req.body.password){
       return true
 

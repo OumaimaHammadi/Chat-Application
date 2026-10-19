@@ -240,7 +240,8 @@ exports.getFriends = async id =>{
         await mongoose.connect(DB_URL);
 
 
-        let data = await User.findById(id,{friends: true});
+        let data = await User.findById(id,{
+            friends: true});
        
         mongoose.disconnect();
     

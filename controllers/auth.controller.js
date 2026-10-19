@@ -6,8 +6,9 @@ const validationResult =require('express-validator').validationResult
 exports.getSignup = (req,res,next) => {
 
     res.render('signup',{
-    authError:req.flash('authError')[0],
     validationErrors: req.flash('validationErrors'),
+        authError:req.flash('authError')[0],
+
     
     
  isUser :false,
@@ -25,10 +26,15 @@ if(validationResult(req).isEmpty()){
         req.body.username,
         req.body.email,
         req.body.password,
-        req.file ? req.file.filename : "default-user-image.png")
-    .then(() => res.redirect('/')) //
+
+req.file ? req.file.filename : "default-user-image.png"
+
+// res.redirect('/login')
+    ).then(() => res.redirect('/login')) 
         
-    .catch(err =>{
+     .catch(err =>{
+             req.flash('authError',err)
+
         console.log(err)
 
 res.redirect('/signup') 
@@ -60,7 +66,9 @@ exports.postlogin = (req,res,next) => {
     if(validationResult(req).isEmpty()){
 
        
-    authModel.login(req.body.email,req.body.password).then((result) =>{
+    authModel.login(
+        req.body.email,req.body.password
+    ).then((result) =>{
     
         req.session.userId = String(result.id)
         req.session.name=result.username

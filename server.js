@@ -2,7 +2,21 @@ const express = require('express')
 const socketIO = require('socket.io')
 const path = require('path')
 const app = express()
-const server =require ('http').createServer(app)
+const fs = require('fs');
+
+require("dotenv").config();
+const port = process.env.PORT || 4001
+
+
+
+// const options = {
+//   key: fs.readFileSync('private-key.pem'),
+//   cert: fs.readFileSync('certificate.pem'),
+// }
+const options={}
+const server =require ('http').createServer(options,app)
+
+
 const ProfileRouter = require('./routers/profile.route')
 
 
@@ -13,6 +27,8 @@ const homeRouter=require('./routers/home.route')
 const chatRouter=require('./routers/chat.route')
 
 const groupRouter=require('./routers/group.route')
+
+const https = require('https');
 
 
 
@@ -90,7 +106,7 @@ app.set('views','views')
 app.use('/home', homeRouter)
 app.use('/profile',ProfileRouter)
 
-app.use('/', authRouter )
+app.use('/', authRouter)
 
 app.use('/friends',friendRouter)
 app.use('/chat',chatRouter)
@@ -203,8 +219,22 @@ app.get('/friends',(req,res)=>{
 
   
 
-server.listen(4000,(err)=>{
+server.listen(port,(err)=>{
 
-    console.log('Server is 4000 okk')
+    console.log(`Server is ${port} okk`)
 
 })
+
+
+
+// server.listen(port,(error) => {
+//     if(!error){
+//         console.log("server listening on port",port)
+
+
+//     }
+
+//     else{
+//         console.log("Error :" ,error)
+//     }
+// })
