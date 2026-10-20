@@ -26,10 +26,10 @@ if(validationResult(req).isEmpty()){
         req.body.username,
         req.body.email,
         req.body.password,
+          req.file ? req.file.path: "default-user-image.png"
 
-req.file ? req.file.filename : "default-user-image.png"
+// req.file ? req.file.filename : "default-user-image.png"
 
-// res.redirect('/login')
     ).then(() => res.redirect('/login')) 
         
      .catch(err =>{

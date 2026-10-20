@@ -1,9 +1,11 @@
 const mongoose =require('mongoose')
 const bcrypt =require('bcrypt')
-const DB_URL='mongodb://127.0.0.1:27017/chat-app'
 
 const User=require('./user.model').User
 
+require("dotenv").config();
+
+const DB_URL = process.env.MONGO_URI;
 
 // exports.createNewUser = (username,email,password,image) =>{
 //     return new Promise((resolve ,reject) =>{

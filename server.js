@@ -2,17 +2,13 @@ const express = require('express')
 const socketIO = require('socket.io')
 const path = require('path')
 const app = express()
-const fs = require('fs');
 
 require("dotenv").config();
 const port = process.env.PORT || 4001
 
 
 
-// const options = {
-//   key: fs.readFileSync('private-key.pem'),
-//   cert: fs.readFileSync('certificate.pem'),
-// }
+
 const options={}
 const server =require ('http').createServer(options,app)
 
@@ -41,11 +37,15 @@ app.use(express.static(path.join(__dirname ,'stylesheets')))
 
 app.use(express.static(path.join(__dirname ,'assetes')))
 app.use(express.static(path.join(__dirname ,'images')))
+
+app.use('/photos',express.static(path.join(__dirname ,'photos')))
+
 app.use(flash())
 
 
 const STORE = new StoreSession({
-   uri :'mongodb://127.0.0.1:27017/chat-app',
+    uri:process.env.MONGO_URI,
+
   collection :'sessions'
 
 })
@@ -98,7 +98,9 @@ app.use((req,res,next)=>{
 })
 
 app.set('view engine','ejs')
-app.set('views','views') 
+// app.set('views','views') 
+app.set('views', path.join(__dirname, 'views'));
+
 
 
 

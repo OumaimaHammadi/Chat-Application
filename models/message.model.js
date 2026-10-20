@@ -1,6 +1,8 @@
 const mongoose =require('mongoose');
 
-const DB_URL='mongodb://127.0.0.1:27017/chat-app'
+require("dotenv").config();
+
+const DB_URL = process.env.MONGO_URI;
 
 const messageSchema =mongoose.Schema({
     chat:{type:mongoose.Schema.Types.ObjectId,ref:'chat'},

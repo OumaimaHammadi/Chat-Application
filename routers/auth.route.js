@@ -10,26 +10,11 @@ const authguard =require('./guards/auth.guard')
 const authController =require('../controllers/auth.controller')
 
  router.get('/signup',authguard.notAuth,authController.getSignup)
- const multer =require('multer')
+const upload = require('../config/multer');
 
 
- router.post('/signup',authguard.notAuth,bodyParserMW,multer({
-    storage:multer.diskStorage({
-        destination:(req,file,cb)=>{
-            cb(null,'images')
-        },
-        filename:(req,file,cb)=>{
-            cb(null,Date.now() + "-" + file.originalname)
-        }
+ router.post('/signup',authguard.notAuth,bodyParserMW,upload.single('image'),
 
-    })
-})
-.single('image'),
-// check('image').custom((value,{req})=>{
-//     if(req.file) return true
-//     else throw 'image is required'
-
-// }),
  
  check('username').not().isEmpty().withMessage('username is required'),
 
@@ -39,7 +24,7 @@ const authController =require('../controllers/auth.controller')
  
  check('password').not().isEmpty().withMessage('password is required').isLength({min:6}).withMessage('password must be at least 6 characters') ,
  
- check('confirmPassword').custom((value,{req})=>{ //custom validator
+ check('confirmPassword').custom((value,{req})=>{ 
      if(value === req.body.password){
       return true
 
@@ -53,10 +38,7 @@ const authController =require('../controllers/auth.controller')
 
 
 
- // (req,res,next)=>{   ///middleware
-     // let value = req.body.password
-    // return check('confirm password').equals(value)
- ///},
+ 
  
 
 
