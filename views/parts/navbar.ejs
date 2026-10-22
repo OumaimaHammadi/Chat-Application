@@ -5,11 +5,20 @@
 
         <nav class="navbar navbar-expand-md ">
             <div class="container-fluid">
+
+
+
                                    <a class="navbar-brand" href="/" id="logo"><span> Chat Application </span></a>
 
-             <button class="navbar-toggler" type="button" data-bs-toggle="dropdown" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <!-- <button class="navbar-toggler" type="button" data-bs-toggle="dropdown" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
-             </button>
+             </button> -->
+
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+              
+                <span><i class="fa-solid fa-bars"></i></span>
+
+              </button>
 
               
            
@@ -88,7 +97,7 @@
     <% for (let request of friendRequests) { %>
         <li>
             <a class="dropdown-item" href="/profile/<%= request.id %>">
-                        <img src="/<%= request.image %>"
+                        <img src="<%= request.image %>"
                           alt="profile"
          width="60"
          height="60"
@@ -182,6 +191,8 @@
   integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
 </script>
  
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+           crossorigin="anonymous"></script>
   
 

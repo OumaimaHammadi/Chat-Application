@@ -51,7 +51,10 @@ const STORE = new StoreSession({
 })
 
 app.use(session({
-    secret:'this is my secret to hash express session ....',
+    // secret:'this is my secret to hash express session ....',
+    
+     secret: process.env.SESSION_SECRET,
+    
     saveUninitialized :true,
     resave: false,
     store:STORE 
@@ -175,7 +178,7 @@ app.use((req, res, next) => {
  
       
     })
-    // console.log('req.friendRequests',req.friendRequests)
+     console.log('UserImage:',UserImage,'UserName:',UserName)
 
 })
 
@@ -221,22 +224,14 @@ app.get('/friends',(req,res)=>{
 
   
 
-server.listen(port,(err)=>{
+// server.listen(port,(err)=>{
 
-    console.log(`Server is ${port} okk`)
+//     console.log(`Server is ${port} okk`)
 
-})
-
-
-
-// server.listen(port,(error) => {
-//     if(!error){
-//         console.log("server listening on port",port)
-
-
-//     }
-
-//     else{
-//         console.log("Error :" ,error)
-//     }
 // })
+
+module.exports = app;
+
+
+
+
