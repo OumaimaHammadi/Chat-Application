@@ -178,7 +178,7 @@ ul#friendRequests .dropdown-item {
 }
 
 /* MOBILE */
-@media (max-width:768px){
+/* @media (max-width:768px){
 
     .navbar-nav{
         margin-top:15px;
@@ -198,4 +198,67 @@ ul#friendRequests .dropdown-item {
         margin-top:10px;
     }
 
+} */
+
+
+
+
+.navbar {
+    background-color: #212529;
+    padding: 10px 16px;
 }
+
+#logo {
+    color: #ffa500;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar .nav-link {
+    color: white;
+}
+
+.navbar .nav-link:hover {
+    color: #ffa500;
+}
+/* 
+@media (max-width: 767.98px) {
+    .navbar-collapse {
+        padding-top: 15px;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px 0;
+    }
+
+    .navbar-collapse > .d-flex {
+        align-items: stretch !important;
+        margin-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar-collapse .dropdown {
+        width: 100%;
+    }
+
+    .navbar-collapse .dropdown > .btn {
+        width: 100%;
+        text-align: left;
+    }
+
+    .navbar-collapse .dropdown-menu {
+        width: 100%;
+    }
+} */
