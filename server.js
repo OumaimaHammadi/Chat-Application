@@ -224,13 +224,13 @@ app.get('/friends',(req,res)=>{
 
   
 
-// server.listen(port,(err)=>{
+server.listen(port,(err)=>{
 
-//     console.log(`Server is ${port} okk`)
+    console.log(`Server is ${port} okk`)
 
-// })
+})
 
- module.exports = app;
+// module.exports = app;
 
 
 
